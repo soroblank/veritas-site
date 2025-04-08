@@ -26,6 +26,7 @@
 
     .glow {
       text-shadow: 0 0 10px #ff0000, 0 0 20px #b01a1a;
+      cursor: pointer;
     }
 
     @keyframes flicker {
@@ -38,15 +39,47 @@
       margin-top: 60px;
       opacity: 0.1;
     }
+
+    #wipe-screen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      color: #ff0000;
+      font-size: 1.5em;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+
+    #wipe-screen.show {
+      display: flex;
+      animation: none;
+    }
   </style>
 </head>
 <body>
   <h1 class="glow">BLACKFLAME PROTOCOL ENGAGED</h1>
   <p class="glow">System lockdown initialized.</p>
   <p class="glow">Encryption sweep: STANDING BY</p>
-  <p class="glow">Command Override: <strong>/burnall</strong></p>
+  <p class="glow" onclick="burnAll()">Command Override: <strong>/burnall</strong></p>
   <p class="glow">No further transmission permitted.</p>
-
   <div class="seal">†</div>
+
+  <div id="wipe-screen">
+    <p>ALL DATA PURGED</p>
+    <p>CONNECTION LOST</p>
+    <div class="seal">†</div>
+  </div>
+
+  <script>
+    function burnAll() {
+      document.body.style.animation = 'none';
+      const wipe = document.getElementById("wipe-screen");
+      wipe.classList.add("show");
+    }
+  </script>
 </body>
 </html>
