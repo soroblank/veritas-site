@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OATHFORGE</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #e0d4a6;
+      font-family: Georgia, serif;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #b01a1a;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+
+    input, textarea, select {
+      background-color: #111;
+      border: 1px solid #b01a1a;
+      color: #e0d4a6;
+      font-family: monospace;
+      padding: 10px;
+      font-size: 1em;
+      margin-bottom: 20px;
+      width: 80%;
+    }
+
+    button {
+      background-color: #b01a1a;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    .scroll {
+      margin-top: 50px;
+      border: 2px solid #b01a1a;
+      padding: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255, 255, 255, 0.03);
+      text-align: left;
+      white-space: pre-line;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #ff4444;
+    }
+  </style>
+</head>
+<body>
+  <h1>THE OATHFORGE</h1>
+  <p>Craft and record a ritual decree or rank-bound contract.</p>
+
+  <input type="text" id="name" placeholder="Name or Title">
+  <br>
+  <select id="rank">
+    <option value="INITIATE">INITIATE</option>
+    <option value="SENTINEL">SENTINEL</option>
+    <option value="EXECUTOR">EXECUTOR</option>
+    <option value="ARCHITECT">ARCHITECT</option>
+  </select>
+  <br>
+  <textarea id="decree" rows="6" placeholder="Type the decree here..."></textarea>
+  <br>
+  <button onclick="forgeOath()">FORGE OATH</button>
+
+  <div id="output" class="scroll" style="display:none;"></div>
+
+  <script>
+    function forgeOath() {
+      const name = document.getElementById("name").value.trim().toUpperCase();
+      const rank = document.getElementById("rank").value;
+      const decree = document.getElementById("decree").value.trim();
+      const date = new Date().toLocaleDateString();
+
+      if (!name || !decree) return alert("All fields must be filled with fire.");
+
+      const scrollText = `
+    OATH OF ${rank}
+    Issued to: ${name}
+    Marked on: ${date}
+
+    ${decree}
+
+    -- Issued under the Flame. Witnessed in Silence. --
+      `;
+
+      const output = document.getElementById("output");
+      output.textContent = scrollText.trim();
+      output.style.display = "block";
+    }
+  </script>
+</body>
+</html>
