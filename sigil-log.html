@@ -32,77 +32,19 @@
       color: #b01a1a;
       font-weight: bold;
     }
-  </style>
-</head>
-<body>
-  <h1>THE SIGIL LOG</h1>
-  <p>Records of all who have been marked by the Flame.</p>
 
-  <div class="log-entry">
-    <p><span class="entry-label">Name:</span> ELIAS VAULT</p>
-    <p><span class="entry-label">Rank:</span> SENTINEL</p>
-    <p><span class="entry-label">Sigil Code:</span> ∴-B3A9F2</p>
-    <p><span class="entry-label">Date Marked:</span> April 7, 2025</p>
-  </div>
-
-  <div class="log-entry">
-    <p><span class="entry-label">Name:</span> KAI THE SILENT</p>
-    <p><span class="entry-label">Rank:</span> INITIATE</p>
-    <p><span class="entry-label">Sigil Code:</span> ⸸-E81C4D</p>
-    <p><span class="entry-label">Date Marked:</span> April 7, 2025</p>
-  </div>
-
-  <!-- TO ADD NEW SIGILS: Copy this block and modify -->
-  <!--
-  <div class="log-entry">
-    <p><span class="entry-label">Name:</span> [INSERT NAME]</p>
-    <p><span class="entry-label">Rank:</span> [RANK]</p>
-    <p><span class="entry-label">Sigil Code:</span> [SYMBOL-CODE]</p>
-    <p><span class="entry-label">Date Marked:</span> [DATE]</p>
-  </div>
-  -->
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sigil Log</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #e0d4a6;
-      font-family: monospace;
-      padding: 40px;
-      text-align: center;
+    .oath-link {
+      display: block;
+      margin-top: 10px;
     }
 
-    h1 {
-      color: #b01a1a;
-      margin-bottom: 40px;
-    }
-
-    .log-entry {
-      background: rgba(255, 255, 255, 0.05);
-      border-left: 3px solid #b01a1a;
-      padding: 15px 25px;
-      margin-bottom: 25px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-
-    .entry-label {
-      color: #b01a1a;
-      font-weight: bold;
-    }
-
-    a {
+    .oath-link a {
       color: #ff4444;
       text-decoration: none;
       font-size: 0.9em;
     }
 
-    a:hover {
+    .oath-link a:hover {
       text-shadow: 0 0 5px #b01a1a;
     }
   </style>
@@ -116,7 +58,7 @@
     <p><span class="entry-label">Rank:</span> SENTINEL</p>
     <p><span class="entry-label">Sigil Code:</span> ∴-B3A9F2</p>
     <p><span class="entry-label">Date Marked:</span> April 7, 2025</p>
-    <p><a href="oathforge.html">Forge Oath</a></p>
+    <div class="oath-link"><a href="oathforge.html" target="_blank">Forge Oath for ELIAS VAULT</a></div>
   </div>
 
   <div class="log-entry">
@@ -124,20 +66,18 @@
     <p><span class="entry-label">Rank:</span> INITIATE</p>
     <p><span class="entry-label">Sigil Code:</span> ⸸-E81C4D</p>
     <p><span class="entry-label">Date Marked:</span> April 7, 2025</p>
-    <p><a href="oathforge.html">Forge Oath</a></p>
+    <div class="oath-link"><a href="oathforge.html" target="_blank">Forge Oath for KAI THE SILENT</a></div>
   </div>
 
-  <!-- To log a new member, copy the block below -->
+  <!-- TEMPLATE FOR NEW ENTRIES -->
   <!--
   <div class="log-entry">
     <p><span class="entry-label">Name:</span> [NAME]</p>
     <p><span class="entry-label">Rank:</span> [RANK]</p>
     <p><span class="entry-label">Sigil Code:</span> [SYMBOL-CODE]</p>
     <p><span class="entry-label">Date Marked:</span> [DATE]</p>
-    <p><a href="oathforge.html">Forge Oath</a></p>
+    <div class="oath-link"><a href="oathforge.html" target="_blank">Forge Oath for [NAME]</a></div>
   </div>
   -->
-</body>
-</html>
 </body>
 </html>
