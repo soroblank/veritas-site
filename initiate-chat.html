@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INITIATE CHAMBER</title>
+  <link rel="stylesheet" href="chat-style.css">
+</head>
+<body>
+  <div id="login-screen">
+    <h1>INITIATE ACCESS</h1>
+    <input type="text" id="username" placeholder="Name the flame...">
+    <button onclick="enterChat()">Enter</button>
+  </div>
+
+  <div id="chat-screen" style="display:none;">
+    <h2>INITIATE CHAMBER</h2>
+    <div id="chat-log"></div>
+    <input type="text" id="message" placeholder="Speak to the fire...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script type="module" src="chat-script.js"></script>
+</body>
+</html>
