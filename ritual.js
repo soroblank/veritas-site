@@ -1,17 +1,19 @@
 function openGate() {
-  const phrase = prompt("Speak the truth:");
-  const flame = phrase?.toLowerCase().trim();
+  const phrase = prompt("Enter access code:");
+  const code = phrase?.toUpperCase().trim();
 
-  if (flame === "i serve only the flame") {
+  if (code === "VX-01-ACT") {
     window.location.href = "commandroom.html";
-  } else if (flame === "i am the spark beneath the ash") {
+  } else if (code === "IN-14-XE3") {
     window.location.href = "initiate.html";
-  } else if (flame === "i watch for the lie") {
+  } else if (code === "SN-22-VG9") {
     window.location.href = "sentinel.html";
-  } else if (flame === "my will is the flames command") {
+  } else if (code === "EX-33-BL7") {
     window.location.href = "executor.html";
-  } else if (flame === "i build for the eternal") {
+  } else if (code === "AR-04-Z9A") {
     window.location.href = "architect.html";
+  } else if (code === "VT-00-Ω") {
+    window.location.href = "veritas.html";
   } else {
     window.location.href = "ashes.html";
   }
