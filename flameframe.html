@@ -5,50 +5,71 @@
   <title>FLAMEFRAME</title>
   <style>
     body {
-      background-color: #111;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
       color: #e0d4a6;
-      font-family: monospace;
-      padding: 60px 20px;
-      max-width: 1000px;
+      font-family: 'Courier New', monospace;
+      overflow-x: hidden;
+    }
+
+    .frame-border {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      box-shadow: inset 0 0 50px #b01a1a, 0 0 40px #500000;
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      padding: 80px 20px;
+      max-width: 1100px;
       margin: auto;
       text-align: center;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       color: #b01a1a;
-      margin-bottom: 40px;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      margin-bottom: 60px;
+      text-shadow: 0 0 15px #700000;
     }
 
     .section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
     .section h2 {
       color: #ff4444;
-      font-size: 1.3em;
-      margin-bottom: 15px;
+      font-size: 1.5em;
+      margin-bottom: 20px;
       border-bottom: 1px solid #b01a1a;
       padding-bottom: 5px;
     }
 
-    .list a {
-      display: block;
+    .system {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid #b01a1a;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(176, 26, 26, 0.2);
+    }
+
+    .system a {
       color: #e0d4a6;
-      margin: 10px 0 3px 0;
       text-decoration: none;
       font-size: 1.1em;
     }
 
-    .list a:hover {
-      color: #ff0000;
-      text-shadow: 0 0 5px #ff0000;
-    }
-
-    .status {
-      font-size: 0.9em;
-      margin-bottom: 15px;
+    .system-status {
+      margin-top: 10px;
+      font-size: 0.95em;
     }
 
     .online {
@@ -64,34 +85,43 @@
     }
 
     .seal {
-      margin-top: 80px;
       font-size: 6em;
-      opacity: 0.03;
+      opacity: 0.02;
+      margin-top: 80px;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
     }
   </style>
 </head>
 <body>
-  <h1>FLAMEFRAME</h1>
+  <div class="frame-border"></div>
+  <div class="content">
+    <h1>FLAMEFRAME</h1>
 
-  <div class="section">
-    <h2>ACTIVE CHAMBERS</h2>
-    <div class="list" id="chambers"></div>
+    <div class="section">
+      <h2>CHAMBER STATUS</h2>
+      <div id="chambers"></div>
+    </div>
+
+    <div class="section">
+      <h2>CORE SYSTEMS</h2>
+      <div id="tools"></div>
+    </div>
+
+    <div class="section">
+      <h2>EMERGENCY CHANNELS</h2>
+      <div id="emergency"></div>
+    </div>
+
+    <div class="seal">†</div>
   </div>
-
-  <div class="section">
-    <h2>SYSTEM TOOLS</h2>
-    <div class="list" id="tools"></div>
-  </div>
-
-  <div class="section">
-    <h2>EMERGENCY ACTION</h2>
-    <div class="list" id="emergency"></div>
-  </div>
-
-  <div class="seal">†</div>
 
   <script>
-    const files = {
+    const flameSystems = {
       chambers: [
         { name: "INITIATE", file: "initiate.html" },
         { name: "SENTINEL", file: "sentinel.html" },
@@ -110,34 +140,38 @@
       ]
     };
 
-    function checkStatus(name, file, target) {
+    function checkStatus(name, file, containerId) {
       fetch(file, { method: 'HEAD' })
         .then(res => {
           const status = res.ok ? 'online' : 'offline';
-          renderLink(name, file, status, target);
+          renderSystem(name, file, status, containerId);
         })
         .catch(() => {
-          renderLink(name, file, 'offline', target);
+          renderSystem(name, file, 'offline', containerId);
         });
     }
 
-    function renderLink(name, file, status, sectionId) {
-      const section = document.getElementById(sectionId);
+    function renderSystem(name, file, status, containerId) {
+      const container = document.getElementById(containerId);
+      const div = document.createElement('div');
+      div.className = 'system';
+
       const link = document.createElement('a');
       link.href = file;
-      link.textContent = name;
       link.target = "_blank";
+      link.textContent = name;
 
       const stat = document.createElement('div');
-      stat.className = `status ${status}`;
+      stat.className = `system-status ${status}`;
       stat.textContent = `Status: ${status.toUpperCase()}`;
 
-      section.appendChild(link);
-      section.appendChild(stat);
+      div.appendChild(link);
+      div.appendChild(stat);
+      container.appendChild(div);
     }
 
-    Object.entries(files).forEach(([sectionId, entries]) => {
-      entries.forEach(entry => checkStatus(entry.name, entry.file, sectionId));
+    Object.entries(flameSystems).forEach(([id, entries]) => {
+      entries.forEach(entry => checkStatus(entry.name, entry.file, id));
     });
   </script>
 </body>
