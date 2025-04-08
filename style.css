@@ -41,3 +41,8 @@ h1 {
 #sigil:hover {
   background: #b01a1a;
 }
+a:hover {
+  opacity: 1;
+  color: #ff0000;
+  text-shadow: 0 0 5px #b01a1a;
+}
