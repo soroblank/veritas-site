@@ -1,0 +1,35 @@
+body {
+  background-color: #0a0a0a;
+  color: #e8dcb0;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#chat-log {
+  height: 300px;
+  overflow-y: scroll;
+  border: 2px solid crimson;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+}
+
+input {
+  padding: 12px;
+  width: 65%;
+  margin-bottom: 12px;
+  background: #222;
+  color: #f4e3c1;
+  border: 1px solid crimson;
+}
+
+button {
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
