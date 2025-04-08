@@ -15,6 +15,8 @@ function openGate() {
   } else if (code === "VT-00-Ω") {
     window.location.href = "veritas.html";
   } else {
-    window.location.href = "ashes.html";
+    else {
+  window.location.href = "errorsigil.html";
+}
   }
 }
