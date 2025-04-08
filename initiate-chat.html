@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>INITIATE CHAMBER</title>
-  <link rel="stylesheet" href="chat-style.css">
+  <link rel="stylesheet" href="chat-style.css" />
 </head>
 <body>
-  <div id="login-screen">
-    <h1>INITIATE ACCESS</h1>
-    <input type="text" id="username" placeholder="Name the flame...">
-    <button onclick="enterChat()">Enter</button>
+  <div class="sidebar">
+    <div class="emblem">†</div>
+    <div class="user-info" id="user-display">No Identity</div>
   </div>
 
-  <div id="chat-screen" style="display:none;">
-    <h2>INITIATE CHAMBER</h2>
-    <div id="chat-log"></div>
-    <input type="text" id="message" placeholder="Speak to the fire...">
-    <button onclick="sendMessage()">Send</button>
+  <div class="chat-container">
+    <div class="header">INITIATE CHAMBER</div>
+    <div class="chat-log" id="chat-log"></div>
+    <div class="input-box">
+      <input type="text" id="username" placeholder="Name yourself..." />
+      <input type="text" id="message" placeholder="Speak to the Flame..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
   </div>
 
   <script type="module" src="chat-script.js"></script>
