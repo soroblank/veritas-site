@@ -17,7 +17,7 @@
       margin-bottom: 30px;
     }
 
-    button {
+    button, select {
       background: #b01a1a;
       color: #fff;
       border: none;
@@ -25,6 +25,10 @@
       font-size: 1.1em;
       cursor: pointer;
       margin-top: 20px;
+    }
+
+    select {
+      margin-left: 10px;
     }
 
     .sigil-output {
@@ -39,19 +43,28 @@
 </head>
 <body>
   <h1>SIGIL GENERATOR</h1>
-  <p>Generate a symbolic ID for any new Initiate, Sentinel, or above.</p>
+  <p>Choose a rank and generate a unique symbolic ID.</p>
 
+  <label for="rank-select">Rank:</label>
+  <select id="rank-select">
+    <option value="INITIATE">INITIATE</option>
+    <option value="SENTINEL">SENTINEL</option>
+    <option value="EXECUTOR">EXECUTOR</option>
+    <option value="ARCHITECT">ARCHITECT</option>
+    <option value="VERITAS">VERITAS</option>
+  </select>
+
+  <br>
   <button onclick="generateSigil()">GENERATE SIGIL</button>
 
   <div id="sigil" class="sigil-output" style="display:none;"></div>
 
   <script>
     const symbols = ["†", "∆", "Ω", "∴", "⨁", "≡", "§", "ψ", "⸸", "₪"];
-    const ranks = ["INITIATE", "SENTINEL", "EXECUTOR", "ARCHITECT", "VERITAS"];
 
     function generateSigil() {
+      const rank = document.getElementById("rank-select").value;
       const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-      const rank = ranks[Math.floor(Math.random() * ranks.length)];
       const hex = Math.random().toString(16).substring(2, 8).toUpperCase();
       const timestamp = new Date().toLocaleString();
 
