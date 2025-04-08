@@ -3,32 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veritas Chat | Initiate Chamber</title>
+  <title>INITIATE CHAMBER</title>
   <link rel="stylesheet" href="style.css" />
-  <script type="module" src="chat.js" defer></script>
 </head>
 <body>
-  <div class="veritas-app">
-    <aside class="sidebar">
-      <div class="logo">V</div>
-      <div class="channel selected"># initiate</div>
-      <!-- Add more ranks later -->
-    </aside>
 
-    <main class="chat">
-      <header class="chat-header">
-        <h1>Initiate Chamber</h1>
-        <span id="user-label">Unknown Flame</span>
-      </header>
-
-      <section class="chat-log" id="chat-log"></section>
-
-      <form id="chat-form" autocomplete="off">
-        <input type="text" id="username" placeholder="Name yourself..." required />
-        <input type="text" id="message" placeholder="Speak to the Flame..." required />
-        <button type="submit">Send</button>
-      </form>
-    </main>
+  <div class="sidebar">
+    <div class="logo">V</div>
+    <div class="channel selected"># initiate</div>
   </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="room-title">INITIATE CHAMBER</div>
+      <div class="user-tag" id="user-tag">Unknown Flame</div>
+    </div>
+
+    <div id="chat-window" class="chat-window"></div>
+
+    <div class="chat-input-area">
+      <input type="text" id="message-input" placeholder="Speak to the Flame..." />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <script type="module" src="chat.js"></script>
 </body>
 </html>
