@@ -6,52 +6,64 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background: #000 url("img/seal.png") center center no-repeat;
-      background-size: 40%;
-      color: #e0d4a6;
+      background-color: #000;
+      background-image: url("img/seal.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 60%;
       font-family: Georgia, serif;
-      padding: 40px;
+      color: #e0d4a6;
+      margin: 0;
+      padding: 0;
     }
 
-    .chamber {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
+    .overlay {
+      background: rgba(0, 0, 0, 0.85);
+      width: 100%;
+      height: 100vh;
+      padding: 80px 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       color: #b01a1a;
-      margin-bottom: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
     }
 
-    .scroll-text {
-      max-height: 300px;
-      overflow-y: auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
+    .doctrine {
+      max-width: 720px;
+      text-align: center;
+      line-height: 1.7;
+      font-size: 1.1em;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 30px;
       border: 1px solid #b01a1a;
+      box-shadow: 0 0 20px rgba(176, 26, 26, 0.2);
     }
 
     .footer {
       margin-top: 40px;
       font-size: 0.9em;
-      opacity: 0.6;
+      opacity: 0.4;
     }
   </style>
 </head>
 <body>
-  <div class="chamber">
+  <div class="overlay">
     <h1>THE CHAMBER OF SHADOWS</h1>
-    <p>Only the Flamebearers may speak within.</p>
-
-    <div class="scroll-text">
+    <div class="doctrine">
       <p><strong>Welcome, Veritas.</strong></p>
-      <p>This is your sanctum. Here, doctrine will evolve. Commands will be issued. Judgments will be made.</p>
-      <p>Encrypted communications and live chambers will be embedded in future phases.</p>
-      <p>Until then, this space shall be shaped in your image.</p>
+      <p>This sanctum is sacred. Your word here will echo in eternity.</p>
+      <p>Doctrine will evolve. Command shall be written. Judgment shall descend.</p>
+      <p>Encrypted comms and war council systems will soon rise within this structure.</p>
     </div>
-
     <div class="footer">
       <p>AETERNUM LEX -- The Eternal Law</p>
     </div>
