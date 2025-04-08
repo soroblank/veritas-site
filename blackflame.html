@@ -58,6 +58,22 @@
       display: flex;
       animation: none;
     }
+
+    .countdown {
+      font-size: 2.5em;
+      margin-top: 20px;
+      color: #ff0000;
+    }
+
+    .pulse {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {opacity: 0.5;}
+      50% {opacity: 1;}
+      100% {opacity: 0.5;}
+    }
   </style>
 </head>
 <body>
@@ -69,9 +85,9 @@
   <div class="seal">†</div>
 
   <div id="wipe-screen">
-    <p>ALL DATA PURGED</p>
-    <p>CONNECTION LOST</p>
-    <div class="seal">†</div>
+    <div class="pulse" style="font-size: 2.2em; margin-bottom: 20px;">PURGE IN PROGRESS</div>
+    <div class="countdown" id="countdown">10</div>
+    <p style="opacity: 0.3; margin-top: 30px;">Subroutine: silence.terminal.purge(Ω)</p>
   </div>
 
   <script>
@@ -79,6 +95,18 @@
       document.body.style.animation = 'none';
       const wipe = document.getElementById("wipe-screen");
       wipe.classList.add("show");
+
+      let count = 10;
+      const cd = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        count--;
+        cd.textContent = count;
+        if (count <= 0) {
+          clearInterval(timer);
+          window.location.href = "errorsigil.html";
+        }
+      }, 1000);
     }
   </script>
 </body>
