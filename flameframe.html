@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>FLAMEFRAME</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+      background: #000;
       color: #e0d4a6;
       font-family: 'Courier New', monospace;
       overflow-x: hidden;
     }
 
-    .frame-border {
+    body::before {
+      content: "";
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
+      background-image: repeating-linear-gradient(transparent, transparent 2px, rgba(255, 0, 0, 0.02) 3px);
+      z-index: 0;
       pointer-events: none;
-      box-shadow: inset 0 0 50px #b01a1a, 0 0 40px #500000;
-      z-index: 1;
+    }
+
+    .boot-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      color: #ff0000;
+      font-size: 1.2em;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: bootOut 3.5s forwards;
+    }
+
+    @keyframes bootOut {
+      0% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; display: none; }
     }
 
     .content {
       position: relative;
       z-index: 10;
-      padding: 80px 20px;
+      padding: 100px 20px 60px;
       max-width: 1100px;
       margin: auto;
       text-align: center;
@@ -38,6 +60,21 @@
       letter-spacing: 3px;
       margin-bottom: 60px;
       text-shadow: 0 0 15px #700000;
+    }
+
+    .flame-core {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff3300 10%, #990000 60%, #000 100%);
+      box-shadow: 0 0 20px #ff0000, 0 0 60px #ff0000, inset 0 0 30px #ff0000;
+      animation: flicker 0.8s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1); box-shadow: 0 0 15px #ff0000, 0 0 30px #b01a1a, inset 0 0 20px #ff0000; }
+      100% { transform: scale(1.1); box-shadow: 0 0 25px #ff4444, 0 0 50px #b01a1a, inset 0 0 30px #ff0000; }
     }
 
     .section {
@@ -58,7 +95,8 @@
       padding: 20px;
       margin: 15px auto;
       max-width: 600px;
-      box-shadow: 0 0 20px rgba(176, 26, 26, 0.2);
+      box-shadow: 0 0 25px rgba(176, 26, 26, 0.25);
+      transition: all 0.3s ease-in-out;
     }
 
     .system a {
@@ -70,18 +108,38 @@
     .system-status {
       margin-top: 10px;
       font-size: 0.95em;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
 
     .online {
       color: #00ff00;
+      animation: pulseGreen 1.5s infinite;
     }
 
     .offline {
       color: #ff4444;
+      animation: pulseRed 1.5s infinite;
     }
 
     .standby {
       color: #ffaa00;
+      animation: pulseYellow 1.5s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes pulseRed {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes pulseYellow {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
 
     .seal {
@@ -89,21 +147,18 @@
       opacity: 0.02;
       margin-top: 80px;
     }
-
-    @keyframes flicker {
-      0% { opacity: 0.5; }
-      50% { opacity: 1; }
-      100% { opacity: 0.5; }
-    }
   </style>
 </head>
 <body>
-  <div class="frame-border"></div>
+
+  <div class="boot-overlay">INITIALIZING FLAMEFRAME SYSTEM...</div>
+
   <div class="content">
     <h1>FLAMEFRAME</h1>
+    <div class="flame-core"></div>
 
     <div class="section">
-      <h2>CHAMBER STATUS</h2>
+      <h2>CHAMBERS</h2>
       <div id="chambers"></div>
     </div>
 
