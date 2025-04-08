@@ -10,6 +10,8 @@ function openGate() {
     window.location.href = "sentinel.html";
   } else if (flame === "my will is the flames command") {
     window.location.href = "executor.html";
+  } else if (flame === "i build for the eternal") {
+    window.location.href = "architect.html";
   } else {
     window.location.href = "ashes.html";
   }
