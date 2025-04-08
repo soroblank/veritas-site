@@ -5,7 +5,7 @@
   <title>FLAMEFRAME</title>
   <style>
     body {
-      background-color: #000;
+      background-color: #111;
       color: #e0d4a6;
       font-family: monospace;
       padding: 60px 20px;
@@ -36,8 +36,9 @@
     .list a {
       display: block;
       color: #e0d4a6;
-      margin: 8px 0;
+      margin: 10px 0 3px 0;
       text-decoration: none;
+      font-size: 1.1em;
     }
 
     .list a:hover {
@@ -45,10 +46,27 @@
       text-shadow: 0 0 5px #ff0000;
     }
 
+    .status {
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+
+    .online {
+      color: #00ff00;
+    }
+
+    .offline {
+      color: #ff4444;
+    }
+
+    .standby {
+      color: #ffaa00;
+    }
+
     .seal {
       margin-top: 80px;
       font-size: 6em;
-      opacity: 0.05;
+      opacity: 0.03;
     }
   </style>
 </head>
@@ -57,32 +75,70 @@
 
   <div class="section">
     <h2>ACTIVE CHAMBERS</h2>
-    <div class="list">
-      <a href="initiate.html" target="_blank">INITIATE</a>
-      <a href="sentinel.html" target="_blank">SENTINEL</a>
-      <a href="executor.html" target="_blank">EXECUTOR</a>
-      <a href="architect.html" target="_blank">ARCHITECT</a>
-    </div>
+    <div class="list" id="chambers"></div>
   </div>
 
   <div class="section">
     <h2>SYSTEM TOOLS</h2>
-    <div class="list">
-      <a href="sigil.html" target="_blank">Sigil Generator</a>
-      <a href="sigil-log.html" target="_blank">Sigil Log</a>
-      <a href="oathforge.html" target="_blank">Oathforge</a>
-      <a href="doctrine.html" target="_blank">Doctrine</a>
-      <a href="veritas-feed.html" target="_blank">Veritas Feed</a>
-    </div>
+    <div class="list" id="tools"></div>
   </div>
 
   <div class="section">
     <h2>EMERGENCY ACTION</h2>
-    <div class="list">
-      <a href="blackflame.html" target="_blank">BLACKFLAME Protocol</a>
-    </div>
+    <div class="list" id="emergency"></div>
   </div>
 
   <div class="seal">†</div>
+
+  <script>
+    const files = {
+      chambers: [
+        { name: "INITIATE", file: "initiate.html" },
+        { name: "SENTINEL", file: "sentinel.html" },
+        { name: "EXECUTOR", file: "executor.html" },
+        { name: "ARCHITECT", file: "architect.html" }
+      ],
+      tools: [
+        { name: "Sigil Generator", file: "sigil.html" },
+        { name: "Sigil Log", file: "sigil-log.html" },
+        { name: "Oathforge", file: "oathforge.html" },
+        { name: "Doctrine", file: "doctrine.html" },
+        { name: "Veritas Feed", file: "veritas-feed.html" }
+      ],
+      emergency: [
+        { name: "BLACKFLAME Protocol", file: "blackflame.html" }
+      ]
+    };
+
+    function checkStatus(name, file, target) {
+      fetch(file, { method: 'HEAD' })
+        .then(res => {
+          const status = res.ok ? 'online' : 'offline';
+          renderLink(name, file, status, target);
+        })
+        .catch(() => {
+          renderLink(name, file, 'offline', target);
+        });
+    }
+
+    function renderLink(name, file, status, sectionId) {
+      const section = document.getElementById(sectionId);
+      const link = document.createElement('a');
+      link.href = file;
+      link.textContent = name;
+      link.target = "_blank";
+
+      const stat = document.createElement('div');
+      stat.className = `status ${status}`;
+      stat.textContent = `Status: ${status.toUpperCase()}`;
+
+      section.appendChild(link);
+      section.appendChild(stat);
+    }
+
+    Object.entries(files).forEach(([sectionId, entries]) => {
+      entries.forEach(entry => checkStatus(entry.name, entry.file, sectionId));
+    });
+  </script>
 </body>
 </html>
