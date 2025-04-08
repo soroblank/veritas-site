@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TRIAL CHAMBER</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0a0a0a;
+      color: #e0d4a6;
+      font-family: 'Georgia', serif;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, #220000, #000000);
+      padding: 60px 20px 40px;
+      text-align: center;
+      border-bottom: 2px solid #550000;
+      box-shadow: 0 0 30px #220000;
+    }
+
+    header h1 {
+      font-size: 3em;
+      letter-spacing: 3px;
+      color: #b01a1a;
+      text-shadow: 0 0 15px #800000;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .trial-block {
+      background: radial-gradient(ellipse at center, #1a0000 0%, #000 100%);
+      border: 2px solid #550000;
+      padding: 30px;
+      margin-bottom: 60px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .trial-block::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 5px;
+      background: linear-gradient(to bottom, #b01a1a, #550000);
+    }
+
+    .trial-block h2 {
+      font-size: 1.6em;
+      color: #ff4444;
+      margin-top: 0;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .trial-block p {
+      margin: 10px 0;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .trial-block p strong {
+      color: #ffaa00;
+      text-shadow: 0 0 10px #b01a1a;
+    }
+
+    .trial-date {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #777;
+      font-style: italic;
+      border-top: 1px solid #550000;
+      padding-top: 10px;
+    }
+
+    .seal {
+      text-align: center;
+      font-size: 6em;
+      opacity: 0.03;
+      margin-top: 100px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .trial-block {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TRIAL CHAMBER</h1>
+  </header>
+
+  <div class="container">
+
+    <div class="trial-block">
+      <h2>Accused: KAI THE SILENT</h2>
+      <p><strong>Charge:</strong> Failure to report under oath. Silence mistaken for absence.</p>
+      <p><strong>Verdict:</strong> Initiate status revoked. May resubmit by fire only.</p>
+      <div class="trial-date">Burned: April 7, 2025</div>
+    </div>
+
+    <div class="trial-block">
+      <h2>Accused: RAEN VAULTBREAKER</h2>
+      <p><strong>Charge:</strong> Unauthorized doctrine edits. Attempted reshaping of Flame.</p>
+      <p><strong>Verdict:</strong> Exiled. Identity sealed. Shadow watches remain in place.</p>
+      <div class="trial-date">Burned: April 8, 2025</div>
+    </div>
+
+    <!-- COPY THIS TO ADD MORE TRIALS -->
+    <!--
+    <div class="trial-block">
+      <h2>Accused: [NAME]</h2>
+      <p><strong>Charge:</strong> [OFFENSE]</p>
+      <p><strong>Verdict:</strong> [PUNISHMENT]</p>
+      <div class="trial-date">Burned: [DATE]</div>
+    </div>
+    -->
+
+  </div>
+
+  <div class="seal">†</div>
+
+</body>
+</html>
