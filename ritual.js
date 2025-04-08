@@ -8,6 +8,8 @@ function openGate() {
     window.location.href = "initiate.html";
   } else if (flame === "i watch for the lie") {
     window.location.href = "sentinel.html";
+  } else if (flame === "my will is the flame's command") {
+    window.location.href = "executor.html";
   } else {
     window.location.href = "ashes.html";
   }
